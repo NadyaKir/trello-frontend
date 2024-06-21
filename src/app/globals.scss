@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--foreground-rgb: 0, 0, 0;
+	--background-start-rgb: 214, 219, 220;
+	--background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background-start-rgb: 0, 0, 0;
+		--background-end-rgb: 0, 0, 0;
+	}
+}
+
+body {
+	@apply text-base overflow-hidden;
+	font-family: var(--font-zen) sans-serif;
+	color: rgb(var(--foreground-rgb));
+	background-color: #0e0f0f;
+
+	@media (max-width: 1200px) {
+		font-size: 16px;
+	}
+	@media (max-width: 992px) {
+		font-size: 14px;
+	}
+}
+
+input.defaultCheckbox {
+	color: white;
+}
+
+input.defaultCheckbox::before {
+	content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"%3E%3Cpath fill="%23000" d="M13.4 0H2.6C1.173 0 0 1.173 0 2.6v10.8C0 14.827 1.173 16 2.6 16h10.8c1.427 0 2.6-1.173 2.6-2.6V2.6C16 1.173 14.827 0 13.4 0zm.4 13.4c0 .22-.18.4-.4.4H2.6c-.22 0-.4-.18-.4-.4V2.6c0-.22.18-.4.4-.4h10.8c.22 0 .4.18.4.4v10.8z" /%3E%3C/svg%3E');
+	position: absolute;
+	fill: currentColor;
+	opacity: 0;
+	top: -2px;
+	left: 50%;
+	width: 16px;
+	height: 16px;
+	transform: translate(-50%, 0px);
+}
+
+.input.defaultCheckbox.checked::before {
+	filter: brightness(0) saturate(100%) invert(52%) sepia(98%) saturate(5728%)
+		hue-rotate(187deg) brightness(101%) contrast(98%);
+}
+
+.slide {
+	animation: slide_anim 0.5s;
+}
+
+@keyframes slide_anim {
+	from {
+		transform: translateX(50px);
+		opacity: 0.4;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+.animation-opacity {
+	animation: opacity_anim 0.5s;
+}
+
+@keyframes opacity_anim {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
